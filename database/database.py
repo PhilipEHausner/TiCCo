@@ -31,5 +31,4 @@ def create_database(files: typing.List[str], database_name: str) -> None:
         del data, mongo_data
 
 
-create_database(["../1861_small.json", "../1862_small.json", "../1863_small.json", "../1864_small.json",
-                 "../1865_small.json"], "testdb")
+create_database(["../timecentricgraphs.json"], "TICCO_DB")

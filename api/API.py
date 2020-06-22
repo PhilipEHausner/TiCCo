@@ -26,10 +26,7 @@ for graph in database.graphs.find({}, {"nodes.label"}):
     for node in graph["nodes"]:
         query_label_to_graphs[node["label"].lower()].add(graph["_id"])
 
-if config.AMERICAN_CIVIL_WAR:
-    index_file = "../output/american_cw_indexed.json"
-else:
-    index_file = "../output/indexed_documents.json"
+index_file = "../output/indexed_documents.json"
 with open(index_file, "r") as f:
     docs = json.load(f)
 
