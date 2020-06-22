@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+  <title>Timeline</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/vis-data@latest/peer/umd/vis-data.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/vis-network@latest/peer/umd/vis-network.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/vis-timeline@latest/peer/umd/vis-timeline-graph2d.min.js"></script>
+  <script type="text/javascript" src="node_modules/@fortawesome/fontawesome-free/js/all.js"></script>
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap' rel='stylesheet' />
+  <link href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="node_modules/@fortawesome/fontawesome-free/css/all.css" />
+</head>
+<body class="body">
+<div id="top-menu">
+  <form id="query" onsubmit="queryTimeline();return false;">
+    <label for="query-field"><strong>Enter Query Term</strong></label>
+    <input type="text" id="query-field" autocomplete="off" autofocus>
+    <input type="submit" style="visibility: hidden;">
+  </form>
+  <div id="granularity-checkboxes">
+    <form id="select-granularities" onsubmit="return false;">
+      <label id="select-granularities-label"><strong>Select Granularity</strong></label>
+      <!-- https://www.w3schools.com/jsref/prop_checkbox_checked.asp -->
+      <label class="checkbox-container">Year
+        <input type="checkbox" id="select_year_gran" name="year_gran" onchange="timeline_show_granularities()" autocomplete="off" checked>
+        <span class="checkbox-gran-style"></span>
+      </label>
+      <label class="checkbox-container">Month
+        <input type="checkbox" id="select_month_gran" name="month_gran" onchange="timeline_show_granularities()" autocomplete="off" checked>
+        <span class="checkbox-gran-style"></span>
+      </label>
+      <label class="checkbox-container">Day
+        <input type="checkbox" id="select_day_gran" name="day_gran" onchange="timeline_show_granularities()" autocomplete="off" checked>
+        <span class="checkbox-gran-style"></span>
+      </label>
+    </form>
+  </div>
+</div>
+<div id="timeline"></div>
+<div id="wrapper">
+  <div id="network-wrapper">
+    <div id="network-menu">
+      <div class="network-menu-text">
+        Related Dates:
+      </div>
+      <select id="select-related">
+        <option value="default" disabled hidden>Related</option>
+        <optgroup label="Supergranular" id="opt-granular">
+        </optgroup>
+        <optgroup label="Related Date" id="opt-related">
+        </optgroup>
+      </select>
+      <div class="network-menu-text">
+        &emsp;&emsp;&emsp;Graph Date:
+      </div>
+      <div id="network-display-time"></div>
+      <div id="network-nodes">
+        <strong>Nodes:</strong>
+        <div class="node-button" id="more">+</div>
+        <div class="node-button" id="less">-</div>
+      </div>
+    </div>
+    <div id="network"></div>
+  </div>
+  <div id="description-wrapper">
+    <div id="text-menu">
+      <select name="Articles" id="articles">
+        <option selected="selected" disabled hidden>Document</option>
+      </select>
+      <select name="Occurrences" id="occurrences">
+        <option selected="selected" disabled hidden>Occurrence</option>
+      </select>
+      <a id="source" target="_blank" style="text-decoration: none">External Source <i class="fas fa-external-link-alt"></i></a>
+    </div>
+    <div id="text-wrapper">
+      <div id="text"></div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="src/network.js"></script>
+<script type="text/javascript" src="src/timeline.js"></script>
+<script type="text/javascript" src="src/text.js"></script>
+<script type="text/javascript" src="src/query.js"></script>
+<script type="text/javascript" src="src/options.js"></script>
+<script type="text/javascript">
+  // get default number of nodes
+  jQuery.getJSON("/graphs/" + curr_graph + "?limit=" + num_nodes, displayNetwork);
+  jQuery.getJSON("/text/2", function(res) {
+    displayText(res);
+  });
+  $(document).ready(function () {
+    $("#network-display-time").text(curr_graph);
+  });
+  jQuery.getJSON("/text_link/2", function (res) {
+    $("#source").attr("href", res);
+  });
+</script>
+
+</body>
+</html>

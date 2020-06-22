@@ -1,0 +1,7 @@
+spacy
+nltk
+tqdm
+unidecode
+fastapi
+uvicorn
+aiofiles

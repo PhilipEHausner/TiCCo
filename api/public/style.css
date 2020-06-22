@@ -1,0 +1,380 @@
+/*
+Basic Template structure for the Ti-CCo demo paper by Hausner, Aumiller and Gertz
+*/
+
+:root {
+  font-family: 'Roboto Slab', serif;
+  background-color: #F5F0EA;
+  --primary: #9ACD32;
+  --secondary: #668E16;
+  --highlight: #ACD161;
+  --highlight-text-manual: #d5eda3;
+  --selected: #EFF709;
+  --highlight-text1: #ACD161;
+  --highlight-text2: #E9BC35;
+}
+
+::selection {
+  background: var(--highlight-text-manual); /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: var(--highlight-text-manual); /* Gecko Browsers */
+}
+
+.body {
+  margin-right: 15px;
+  margin-left: 10px;
+}
+
+.vis-item:hover {
+  background-color: lightslategrey;
+  cursor: pointer;}
+
+/* timeline items style */
+div.vis-readonly {
+  /* custom styling for readonly items... */
+  background-color: var(--primary);
+  border-color: var(--secondary);
+  color: black;
+  border-width: 2px;
+}
+
+div.vis-readonly:hover {
+  background-color: var(--highlight);
+}
+
+div.vis-readonly.vis-selected {
+  background-color: var(--selected);
+  border-color: var(--secondary);
+}
+
+div.vis-readonly.vis-selected:hover {
+  background-color: var(--highlight);
+}
+
+div.vis-item.vis-point.vis-readonly.vis-selected {
+  background-color: var(--selected);
+}
+
+#anchor {
+  background: var(--highlight-text1);
+  font-weight: bold;
+}
+
+#anchor2 {
+  background: var(--highlight-text2);
+  font-weight: bold;
+}
+
+#timeline {
+  width: 100%;
+  height: 45vh;
+  margin: auto;
+  margin-top: 15px;
+  /*border: 1px solid lightgray;*/
+  background-color: #FFFFFF;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #5a0f14;
+  resize: vertical;
+  overflow: auto;
+}
+
+#wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+#network-wrapper {
+  order: 1;
+  width: 45%;
+  height: 40vh;
+  margin-top: 20px;
+  margin-right: 3%;
+  background-color: #FFFFFF;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #5a0f14;
+  resize: vertical;
+  overflow: hidden;
+}
+
+#network-menu {
+  height: 40px;
+  border-bottom: 2px solid var(--secondary);
+  background-color: var(--primary);
+}
+
+.network-menu-text {
+  padding-left: 10px;
+  padding-right: 5px;
+  float: left;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+#network-display-time {
+  padding-left: 10px;
+  padding-right: 30px;
+  float: left;
+  line-height: 40px;
+  min-width: 80px;
+}
+
+#select-related {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 10px;
+  min-width: 10vh;
+  float: left;
+  font: inherit;
+}
+
+#network-nodes {
+  line-height: 40px;
+  float: right;
+}
+
+#network-nodes strong {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.node-button {
+  line-height: 20px;
+  font-size: 20px;
+  width: 20px;
+  padding: 5px;
+  margin-top: 4px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  border: 1px solid #5a0f14;
+  background-color: #f5f0ea;
+  float: right;
+}
+
+.node-button:hover {
+  background-color: lightslategray;
+  cursor: pointer;
+}
+
+#network {
+  height: calc( 100% - 40px );
+}
+
+#description-wrapper {
+  width: 50%;
+  height: 40vh;
+  margin-top: 20px;
+  margin-left: 2%;
+  margin-right: -6px;
+  order: 2;
+  resize: vertical;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #5a0f14;
+}
+
+#text-menu {
+  height: 40px;
+  border-bottom: 2px solid var(--secondary);
+  background-color: var(--primary);
+}
+
+#articles {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 20px;
+  min-width: 10vh;
+  max-width: 500px;
+  float: left;
+  font: inherit;
+}
+
+#occurrences {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 20px;
+  min-width: 10vh;
+  font: inherit;
+}
+
+#source {
+  float: right;
+  background: #f5f0ea;
+  margin-top: 4px;
+  margin-right: 20px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+option {
+  width: 10vh;
+  font-family: inherit;
+}
+
+#text-wrapper {
+  height: calc( 100% - 40px );
+  overflow: scroll;
+}
+
+#text {
+  padding: 20px;
+}
+
+.highlight {
+  background-color: var(--selected);
+}
+/* Make sure higlights maintain different color */
+.highlight::-moz-selection {
+  background-color: var(--secondary);
+}
+
+.highlight::selection {
+  background-color: var(--secondary);
+}
+
+#top-menu {
+  width: 100%;
+  height: 43px;
+  margin: auto;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  background-color: var(--primary);
+  color: #000000;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #5a0f14;
+}
+
+#query {
+  width: 80vw;
+  padding: 5px;
+  margin-left: 1vw;
+}
+
+#query-field {
+  width: 60vw;
+  margin-left: 5px;
+  order: 1;
+  font: inherit;
+}
+
+#granularity-checkboxes {
+  order: 2;
+}
+
+#select-granularities {
+  display: flex;
+  flex-direction: row;
+}
+
+#select-granularities-label {
+  width: 105px;
+}
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkbox-gran-style {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #f5f0ea;
+}
+
+.checkbox-container:hover input ~ .checkbox-gran-style {
+  background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkbox-gran-style {
+  background-color: #f5f0ea;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkbox-gran-style:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkbox-gran-style:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkbox-gran-style:after {
+  left: 6px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid #c50d29;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+input {
+  font-family: inherit;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 175px;
+  width: 40vw;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: var(--primary) !important;
+}
