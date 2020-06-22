@@ -17,9 +17,7 @@ def createParser() -> argparse.Namespace:
     parser.add_argument("-d", "--data", required=True, help="Relative or absolute file location for input JSON file.")
 
     parser.add_argument("-hlang", type=str, default="GERMAN", help="Document language. Default: GERMAN",
-                        choices=["ENGLISH", "GERMAN", "DUTCH", "ENGLISHCOLL", "ENGLISHSCI", "SPANISH", "ITALIAN",
-                                 "ARABIC", "VIETNAMESE", "FRENCH", "CHINESE", "RUSSIAN", "CROATIAN", "PORTUGUESE",
-                                 "ESTONIAN"], metavar="LANGUAGE")
+                        choices=["ENGLISH", "GERMAN"], metavar="LANGUAGE")
 
     parser.add_argument("-htype", type=str, default="NARRATIVES", help="Type of document. Default: NARRATIVES",
                         choices=["NARRATIVES", "NEWS", "COLLOQUIAL", "SCIENTIFIC"], metavar="TYPE")
@@ -28,7 +26,7 @@ def createParser() -> argparse.Namespace:
                         help="Relative or absolute directory path where the result is stored.",
                         metavar="PATH")
 
-    parser.add_argument("-f", "--folder", type=str, required=True, dest="temp_folder",
+    parser.add_argument("-f", "--folder", type=str, default="./temp_folder", dest="temp_folder",
                         help="Folder where intermediate results are stored, or retrieved.",
                         metavar="Folder")
 
@@ -41,7 +39,7 @@ def createParser() -> argparse.Namespace:
                         help="Load a pickle file containing a already processed Document Collection (specified with"
                              "-d).")
 
-    parser.add_argument("-w", "--window_size", type=int, required=True,
+    parser.add_argument("-w", "--window_size", type=int, default=2, required=True,
                         help="Window size for co-occurrence extraction in each direction, s.t. total window size "
                              "equals 2*w+1.", metavar="SIZE")
 
