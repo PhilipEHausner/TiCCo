@@ -91,6 +91,8 @@ which outputs
 ```
 
 ## Running the User Interface
+During the generation of time-centric co-occurrence graphs, a file named `indexed_documents.json` is created in the output folder. In `api/config.py` specify the path to this file in the variable `INDEXED_DOCUMENTS_PATH`.
+
 To start the user interface, `cd` into the `api/` folder, and run
 ```bash
 uvicorn API:app --reload

@@ -26,7 +26,7 @@ for graph in database.graphs.find({}, {"nodes.label"}):
     for node in graph["nodes"]:
         query_label_to_graphs[node["label"].lower()].add(graph["_id"])
 
-index_file = "../output/indexed_documents.json"
+index_file = config.INDEXED_DOCUMENTS_PATH
 with open(index_file, "r") as f:
     docs = json.load(f)
 
