@@ -1,7 +1,8 @@
 spacy
 nltk
 tqdm
-unidecode
+pymongo
 fastapi
 uvicorn
+gunicorn
 aiofiles

@@ -5,7 +5,6 @@ special attention for every data set).
 import json
 import typing
 import os
-from unidecode import unidecode
 
 
 def parseJson(filepath: str, output_folder: str) -> typing.List[dict]:
@@ -69,9 +68,6 @@ def _preprocessJson(data: typing.List[dict]) -> typing.List[dict]:
     for d in data:
         for y0, y1 in char_replace:
             d["text"] = d["text"].replace(y0, y1)
-        # all other non-utf-8 characters are removed in the next line. However, this does not necessarily preserve
-        # the length of the text, since some characters are converted in two (or more?) characters
-        # d["text"] = unidecode(d["text"])
     return data
 
 
