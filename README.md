@@ -24,13 +24,15 @@ If you do not have MongoDB installed already, see the [official MongoDB docs](ht
 The connection port is set under `database/database.py`, as well as `api/API.py`.
 This is important if your MongoDB is running under a port different from the default setting.
 
+## Online Demonstration
+
+A public demonstration of this work can be found under [https://ticco.ifi.uni-heidelberg.de/]. For purposes of reproducibility, we also provide the already processed Wikipedia articles as well as the resulting time-centric-co-occurrence graphs. It can be downloaded [here](https://heibox.uni-heidelberg.de/f/c052d3ee63634515ad90/?dl=1).
+
 ## Input Documents and Graph Generation
 
 ### Input Format
 For the sake of reference and reproducibility, we have included a small test dataset to demonstrate the input format,
 both for Germand and English data. They can be found in `test_files/`. Note that each JSON file represents an *entire collection*.
-
-Requests for the full dataset used in our evaluation can be made to [hausner@informatik.uni-heidelberg.de](mailto:hausner@informatik.uni-heidelberg.de).
 
 A single document in the JSON input file should look like this:
 ```python3
