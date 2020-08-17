@@ -26,7 +26,7 @@ This is important if your MongoDB is running under a port different from the def
 
 ## Online Demonstration
 
-A public demonstration of this work can be found under [https://ticco.ifi.uni-heidelberg.de/]. For purposes of reproducibility, we also provide the already processed Wikipedia articles as well as the resulting time-centric-co-occurrence graphs. It can be downloaded [here](https://heibox.uni-heidelberg.de/f/c052d3ee63634515ad90/?dl=1).
+A public demonstration of this work can be found under https://ticco.ifi.uni-heidelberg.de/. For purposes of reproducibility, we also provide the already processed Wikipedia articles as well as the resulting time-centric-co-occurrence graphs. It can be downloaded [here](https://heibox.uni-heidelberg.de/f/c052d3ee63634515ad90/?dl=1).
 
 ## Input Documents and Graph Generation
 
